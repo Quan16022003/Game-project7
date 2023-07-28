@@ -1,0 +1,107 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "MAP1.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "": {
+            "scaleInEditor": 5.5
+        },
+        "Decorations (32x32).tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "MAP1.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 430.66666666666663,
+                "y": 254.33333333333334
+            }
+        },
+        "TilesetGround.tsx": {
+            "scaleInDock": 1
+        },
+        "UTITILED.tmx": {
+            "expandedGroupLayers": [
+                4
+            ],
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 390,
+                "y": 237.5
+            }
+        },
+        "VillageProps.tsx": {
+            "scaleInDock": 1
+        },
+        "decoration-tileset.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "decoration.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "terrain.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 347.33333333333326,
+                "y": 210.99999999999997
+            }
+        },
+        "terrain.tmx#terrain": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "terrain.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tileset.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 4
+        },
+        "untitled.tmx": {
+            "scale": 0.8134374999999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 480.67614291202466,
+                "y": 507.1071840184402
+            }
+        }
+    },
+    "last.exportedFilePath": "C:/Users/Hoang/OneDrive/UNIVERSITY/HocGame/self-game/project7/Maps",
+    "last.externalTilesetPath": "C:/Users/Hoang/OneDrive/UNIVERSITY/HocGame/self-game/project7/Maps",
+    "last.imagePath": "C:/Users/Hoang/OneDrive/UNIVERSITY/HocGame/self-game/project7/Sprites/14-TileSets",
+    "map.height": 14,
+    "map.lastUsedExportFilter": "Lua files (*.lua)",
+    "map.lastUsedFormat": "tmx",
+    "map.width": 24,
+    "openFiles": [
+        "MAP1.tmx",
+        "decoration.tsx",
+        "terrain.tsx"
+    ],
+    "project": "KingsMap.tiled-project",
+    "property.type": "string",
+    "recentFiles": [
+        "terrain.tsx",
+        "decoration.tsx",
+        "MAP1.tmx",
+        "decoration-tileset.tsx",
+        "UTITILED.tmx",
+        "tileset.tsx",
+        "terrain.tmx",
+        "Decorations (32x32).tsx",
+        "untitled.tmx"
+    ],
+    "tileset.embedInMap": false,
+    "tileset.lastUsedFormat": "tsx"
+}
