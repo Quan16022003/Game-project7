@@ -22,6 +22,7 @@ function GameObject:init(def)
     self.onConsume = def.onConsume
     self.hit = def.hit
     self.class = ""
+    self.visible = def.visible
 end
 
 function GameObject:collides(target)
@@ -34,5 +35,7 @@ function GameObject:update(dt)
 end
 
 function GameObject:render()
-    love.graphics.draw(gTextures[self.texture], gFrames[self.texture][self.frame], self.x, self.y)
+    if self.visible then
+        love.graphics.draw(gTextures[self.texture], gFrames[self.texture][self.frame], self.x, self.y)
+    end
 end

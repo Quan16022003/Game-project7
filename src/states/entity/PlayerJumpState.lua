@@ -56,4 +56,17 @@ function PlayerJumpState:update(dt)
         self.player:moveX(dt)
         self.player:checkRightCollisions(dt)
     end
+
+    for k, object in pairs(self.player.level.objects) do
+        if object:collides(self.player) then
+            if object.solid then
+                self.player.dy = 0
+                self.player.y = object.y + object.height + 1
+                self.player:changeState('falling')
+            elseif object.consumable then
+                object.onConsume(self.player)
+                table.remove(self.player.level.objects, k)
+            end
+        end
+    end
 end

@@ -28,5 +28,5 @@ function Door:update(dt)
     end
 end
 function Door:render()
-    love.graphics.draw(gTextures[self.texture], gFrames[self.texture][self.frame], self.x, self.y)
+    GameObject.render(self)
 end

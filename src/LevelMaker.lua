@@ -36,6 +36,7 @@ function LevelMaker.CreateMap(mapLevel)
                             texture = 'door-idle',
                             x = object.x, y = object.y,
                             width = 46, height = 56,
+                            visible = object.visible,
                             frame = 1,
                             collidable = false
                         }
@@ -46,6 +47,7 @@ function LevelMaker.CreateMap(mapLevel)
                             texture = 'box-idle',
                             x = object.x, y = object.y,
                             width = object.width, height = object.height,
+                            visible = object.visible,
                             frame = 1,
                             collidable = true,
                             hit = false,

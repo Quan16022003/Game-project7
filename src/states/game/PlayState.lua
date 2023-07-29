@@ -16,6 +16,8 @@ function PlayState:enter(params)
     Timer.tween(1, {
         [self] = {alpha = 0}
     }):finish(function() self.isPlayed = true end)
+
+    self.camera = {x=0, y=0}
 end
 
 function PlayState:update(dt)
@@ -31,9 +33,12 @@ function PlayState:update(dt)
             })
         end
     end
+    self:updateCamera()
 end
 
 function PlayState:render()
+    love.graphics.clear(rgba(57, 56, 82))
+    love.graphics.translate(-math.floor(self.camera.x), -math.floor(self.camera.y))
     love.graphics.setColor(rgba(255, 255, 255))
     self.level:render()
     self.player:render()
@@ -43,4 +48,9 @@ function PlayState:render()
 end
 
 function PlayState:exit()
+end
+
+function PlayState:updateCamera()
+    self.camera.x = self.player.x - VIRTUAL_WIDTH/2
+    self.camera.y = self.player.y - VIRTUAL_HEIGHT/2
 end
