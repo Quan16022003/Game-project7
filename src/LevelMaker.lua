@@ -28,6 +28,32 @@ function LevelMaker.CreateMap(mapLevel)
             end
             local map = TileMap(width, height, tiles, layer.class)
             maps[layer.name] = map
+        elseif layer.class == "objects" then
+            for k, object in pairs(layer.objects) do
+                if object.name == "door" then
+                    table.insert(objects, 
+                        Door {
+                            texture = 'door-idle',
+                            x = object.x, y = object.y,
+                            width = 46, height = 56,
+                            frame = 1,
+                            collidable = false
+                        }
+                    )
+                elseif object.name == "box" then
+                    table.insert(objects,
+                        GameObject {
+                            texture = 'box-idle',
+                            x = object.x, y = object.y,
+                            width = object.width, height = object.height,
+                            frame = 1,
+                            collidable = true,
+                            hit = false,
+                            solid = true
+                        }
+                    )
+                end
+            end
         end
     end
     local gameLevel = GameLevel(entities, objects, maps)

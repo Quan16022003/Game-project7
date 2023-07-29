@@ -50,3 +50,8 @@ function print_r ( t )
     end
     print()
 end
+
+function rgba(red, green, blue, alpha)
+    alpha = alpha or 1
+    return {red/255, green/255, blue/255, alpha}
+end

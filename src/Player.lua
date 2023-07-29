@@ -3,6 +3,7 @@ Player = Class{__includes = Entity}
 function Player:init(def)
     Entity.init(self, def)
     self.score = 0
+    self.enteredNextDoor = false
 end
 
 function Player:update(dt)
@@ -19,6 +20,7 @@ function Player:render()
     math.floor(self.x)+self.width/2, math.floor(self.y), 0, self.direction == 'right' and 1 or -1, 1, 32, 14)
     -- love.graphics.setLineWidth(1)
     -- love.graphics.rectangle('line', self.x, self.y, self.width, self.height)
+    -- love.graphics.print(tostring(self:checkOnDoor()), 10, 10)
 end
 
 function Player:moveX(dt)
@@ -39,15 +41,15 @@ function Player:checkLeftCollisions(dt)
         self.x = (tileTopLeft.x - 1) * TILE_SIZE + tileTopLeft.width - 1
     else
         
-        -- -- allow us to walk atop solid objects even if we collide with them
-        -- self.y = self.y - 1
-        -- local collidedObjects = self:checkObjectCollisions()
-        -- self.y = self.y + 1
+        -- allow us to walk atop solid objects even if we collide with them
+        self.y = self.y - 1
+        local collidedObjects = self:checkObjectCollisions()
+        self.y = self.y + 1
 
-        -- -- reset X if new collided object
-        -- if #collidedObjects > 0 then
-        --     self.x = self.x + PLAYER_WALK_SPEED * dt
-        -- end
+        -- reset X if new collided object
+        if #collidedObjects > 0 then
+            self.x = self.x + PLAYER_RUN_SPEED * dt
+        end
     end
 end
 
@@ -62,15 +64,15 @@ function Player:checkRightCollisions(dt)
         self.dx = 0
     else
         
-        -- -- allow us to walk atop solid objects even if we collide with them
-        -- self.y = self.y - 1
-        -- local collidedObjects = self:checkObjectCollisions()
-        -- self.y = self.y + 1
+        -- allow us to walk atop solid objects even if we collide with them
+        self.y = self.y - 1
+        local collidedObjects = self:checkObjectCollisions()
+        self.y = self.y + 1
 
-        -- -- reset X if new collided object
-        -- if #collidedObjects > 0 then
-        --     self.x = self.x - PLAYER_WALK_SPEED * dt
-        -- end
+        -- reset X if new collided object
+        if #collidedObjects > 0 then
+            self.x = self.x - PLAYER_RUN_SPEED * dt
+        end
     end
 end
 
@@ -89,4 +91,15 @@ function Player:checkObjectCollisions()
     end
 
     return collidedObjects
+end
+
+function Player:checkOnDoor()
+    for k, object in pairs(self.level.objects) do
+        if object:collides(self) then
+            if object.class == "Door" then
+                return true
+            end
+        end
+    end 
+    return false
 end

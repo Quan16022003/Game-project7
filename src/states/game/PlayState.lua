@@ -5,22 +5,42 @@ function PlayState:init()
 end
 
 function PlayState:enter(params)
-    self.map = params.map
-    self.level = LevelMaker.CreateMap(self.map)
-    self.tileMap = self.level.tileMaps['ground']
-    self.player = LevelMaker.CreatePlayer(self.map)
-    self.player.map = self.tileMap
+    self.levelNumber = params.levelNumber
+    self.level = LevelMaker.CreateMap(MAPS[self.levelNumber])
+    self.player = LevelMaker.CreatePlayer(MAPS[self.levelNumber])
+    self.player.map = self.level.tileMaps['ground']
     self.player.level = self.level
-    -- self.player:changeState('falling')
+
+    self.isPlayed = false
+    self.alpha = 1
+    Timer.tween(1, {
+        [self] = {alpha = 0}
+    }):finish(function() self.isPlayed = true end)
 end
 
 function PlayState:update(dt)
-    self.level:clear()
-    self.player:update(dt)
+    if self.isPlayed then
+        self.level:clear()
+        self.level:update(dt)
+        self.player:update(dt)
+        if self.player.enteredNextDoor == true then
+            gStateMachine:change('change', {
+                levelNumber = self.levelNumber,
+                level = self.level,
+                player = self.player
+            })
+        end
+    end
 end
 
 function PlayState:render()
+    love.graphics.setColor(rgba(255, 255, 255))
     self.level:render()
     self.player:render()
-    -- love.graphics.print(tostring(self.x), 10, 10)
+    
+    love.graphics.setColor(rgba(57, 56, 82, self.alpha))
+    love.graphics.rectangle('fill', 0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT)
+end
+
+function PlayState:exit()
 end

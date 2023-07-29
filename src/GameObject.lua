@@ -14,13 +14,14 @@ function GameObject:init(def)
     self.texture = def.texture
     self.width = def.width
     self.height = def.height
-    self.frame = def.frame
+    self.frame = def.frame or 1
     self.solid = def.solid
     self.collidable = def.collidable
     self.consumable = def.consumable
     self.onCollide = def.onCollide
     self.onConsume = def.onConsume
     self.hit = def.hit
+    self.class = ""
 end
 
 function GameObject:collides(target)

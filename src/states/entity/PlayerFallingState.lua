@@ -21,12 +21,14 @@ function PlayerFallingState:update(dt)
     -- if we get a collision beneath us, go into either walking or idle
     if (tileBottomLeft and tileBottomRight) and (tileBottomLeft:collidable() or tileBottomRight:collidable()) then
         self.player.dy = 0
-        
         -- set the player to be walking or idle on landing depending on input
         if love.keyboard.isDown('left') or love.keyboard.isDown('right') then
             self.player:changeState('run')
         else
-            self.player:changeState('idle')
+            self.player.texture = 'human-ground'
+            Timer.after(0.15, function() 
+                self.player:changeState('idle')
+            end)
         end
 
         self.player.y = (tileBottomLeft.y - 1) * TILE_SIZE - self.player.height
@@ -43,5 +45,26 @@ function PlayerFallingState:update(dt)
         self.player.dx = PLAYER_RUN_SPEED
         self.player:moveX(dt)
         self.player:checkRightCollisions(dt)
+    end
+    -- check if we've collided with any collidable game objects
+    for k, object in pairs(self.player.level.objects) do
+        if object:collides(self.player) then
+            if object.solid then
+                self.player.dy = 0
+                self.player.y = object.y - self.player.height
+
+                if love.keyboard.isDown('left') or love.keyboard.isDown('right') then
+                    self.player:changeState('run')
+                else
+                    self.player.texture = 'human-ground'
+                    Timer.after(0.15, function() 
+                        self.player:changeState('idle')
+                    end)
+                end
+            elseif object.consumable then
+                object.onConsume(self.player)
+                table.remove(self.player.level.objects, k)
+            end
+        end
     end
 end

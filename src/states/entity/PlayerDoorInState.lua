@@ -8,8 +8,26 @@ function PlayerDoorInState:init(player)
         interval = 0.09
     }
     self.player.currentAnimation = animation
+    self.door = self:getDoorObject()
+    self.door:open()
+end
+
+function PlayerDoorInState:getDoorObject()
+    for k, object in pairs(self.player.level.objects) do
+        if object:collides(self.player) then
+            if object.class == "Door" then
+                return object
+            end
+        end
+    end
+    return nil
 end
 
 function PlayerDoorInState:update(dt)
-    self.player.currentAnimation:update(dt)
+    if self.door.frame == 5 then
+        self.player.currentAnimation:update(dt)
+        if self.player.currentAnimation:getCurrentFrame() == 8 then
+            self.player.enteredNextDoor = true
+        end
+    end
 end

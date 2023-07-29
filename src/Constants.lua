@@ -6,7 +6,9 @@ VIRTUAL_HEIGHT = 432
 
 TILE_SIZE = 32
 -- map
-MAP1 = require "Maps/map1"
+MAPS = {
+    [1] = require "Maps/map1"
+}
 
 COLLIDABLE_TILES = {
     21,22,23,25,27,28,30,31,33,34,36,40,42,44,46,47,49,50,52,53,55,56,59,60,61,63,101

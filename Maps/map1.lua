@@ -10,7 +10,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 8,
-  nextobjectid = 7,
+  nextobjectid = 11,
   properties = {},
   tilesets = {
     {
@@ -97,8 +97,8 @@ return {
       type = "objectgroup",
       draworder = "topdown",
       id = 6,
-      name = "object",
-      class = "",
+      name = "objects",
+      class = "objects",
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -112,10 +112,36 @@ return {
           name = "door",
           type = "",
           shape = "rectangle",
-          x = 562.125,
-          y = 231.667,
+          x = 521,
+          y = 232,
           width = 46,
           height = 56,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 7,
+          name = "box",
+          type = "",
+          shape = "rectangle",
+          x = 346,
+          y = 272,
+          width = 22,
+          height = 16,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 9,
+          name = "box",
+          type = "",
+          shape = "rectangle",
+          x = 368,
+          y = 272,
+          width = 22,
+          height = 16,
           rotation = 0,
           visible = true,
           properties = {}
@@ -149,7 +175,7 @@ return {
           visible = true,
           properties = {
             ["direction"] = "right",
-            ["state"] = "door-out"
+            ["state"] = "idle"
           }
         }
       }

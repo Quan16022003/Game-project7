@@ -30,4 +30,16 @@ function PlayerIdleState:update(dt)
     if love.keyboard.wasPressed('space') then
         self.player:changeState('jump')
     end
+    if love.keyboard.wasPressed('o') then
+        -- local doorObject = self:getDoorObject()
+        -- if doorObject == true then
+        --     self.player:changeState('door-in')        
+        -- end
+        local door = self.player:checkOnDoor()
+        if door ~= nil then
+            self.player:changeState('door-in')        
+        end
+ 
+    end
 end
+

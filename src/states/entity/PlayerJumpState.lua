@@ -49,11 +49,11 @@ function PlayerJumpState:update(dt)
         self.player.dx = - PLAYER_RUN_SPEED
         self.player.direction = 'left'
         self.player:moveX(dt)
-        self.player:checkLeftCollisions()
+        self.player:checkLeftCollisions(dt)
     elseif love.keyboard.isDown('right') then
         self.player.dx = PLAYER_RUN_SPEED
         self.player.direction = 'right'
         self.player:moveX(dt)
-        self.player:checkRightCollisions()
+        self.player:checkRightCollisions(dt)
     end
 end

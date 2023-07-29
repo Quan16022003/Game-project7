@@ -27,9 +27,6 @@ function GameLevel:update(dt)
     for k, tileMap in pairs(self.tileMaps) do
         tileMap:update(dt)
     end
-    for k, tileMap in pairs(self.tileMaps) do
-        tileMap:update(dt)
-    end
     for k, object in pairs(self.objects) do
         object:update(dt)
     end
